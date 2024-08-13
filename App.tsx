@@ -28,6 +28,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {NavigationContainer} from "@react-navigation/native";
 import Main from './screens/Main';
 import Scan from './screens/Scan';
+import Call from './screens/Call';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -71,9 +72,11 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <Stack.Navigator  >
         <Stack.Screen options={{ headerShown: false }}  name="Main" component={Main} /> 
-        <Stack.Screen name="Scan" component={Scan}/>
+        <Stack.Screen options={{ headerShown: false }}  name="Scan" component={Scan}/>
+        <Stack.Screen options={{ headerShown: false }}  name="Call" component={Call}/>
       </Stack.Navigator>
     </NavigationContainer>
+
   );
 }
 
