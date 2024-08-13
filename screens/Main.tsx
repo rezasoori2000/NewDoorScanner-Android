@@ -10,7 +10,7 @@ type RootStackParamList = {
     Call:undefined;
 };
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Main'>;
+
 
 export default function Main(): React.JSX.Element {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'Main'>>();
