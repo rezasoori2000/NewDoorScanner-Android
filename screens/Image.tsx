@@ -53,7 +53,7 @@ const DoorImage: React.FC<DoorImageProps> = ({ route, navigation }) => {
       </View>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Image</Text> 
+          <Text style={styles.headerText}>Image</Text>
         </View>
         <View style={[styles.infoContainer]}>
           <ColorMatrix matrix={colorMatrix}>
