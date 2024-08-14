@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Mailer from 'react-native-mail';
 import { useNavigation } from '@react-navigation/native';
+import { CallProps, RootStackParamList } from '../constant/RoutingType';
 const handleEmail = () => {
   
   
@@ -31,13 +32,9 @@ const handleEmail = () => {
 const handlePhone = () => {
   ;
 };
-type RootStackParamList = {
-    Main: undefined;
-    Scan: undefined;
-    Call:undefined;
-};
- function Call():React.ReactNode{
-    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList,'Call'>>();
+
+const Brief: React.FC<CallProps> = ({ route, navigation }) => {
+    
     return (
         <View style={{flex: 1}}>
           <View style={styles.header}>
@@ -223,5 +220,5 @@ type RootStackParamList = {
         justifyContent: 'center',
       },
     });
-    export default Call;
     
+export default Brief;

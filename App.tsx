@@ -29,38 +29,17 @@ import {NavigationContainer} from "@react-navigation/native";
 import Main from './screens/Main';
 import Scan from './screens/Scan';
 import Call from './screens/Call';
+import Brief from './screens/Brief';
+import { RootStackParamList } from './constant/RoutingType';
+import DoorImage from './screens/Image';
+import Detail from './screens/Detail';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
 
-const Stack = createNativeStackNavigator();
+
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -74,29 +53,13 @@ function App(): React.JSX.Element {
         <Stack.Screen options={{ headerShown: false }}  name="Main" component={Main} /> 
         <Stack.Screen options={{ headerShown: false }}  name="Scan" component={Scan}/>
         <Stack.Screen options={{ headerShown: false }}  name="Call" component={Call}/>
+        <Stack.Screen options={{ headerShown: false }}  name="Brief" component={Brief}/>
+        <Stack.Screen options={{ headerShown: false }}  name="Detail" component={Detail}/>
+        <Stack.Screen options={{ headerShown: false }}  name="DoorImage" component={DoorImage}/>
       </Stack.Navigator>
     </NavigationContainer>
 
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
