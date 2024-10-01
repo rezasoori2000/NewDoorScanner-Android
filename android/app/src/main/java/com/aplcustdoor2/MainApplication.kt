@@ -1,4 +1,4 @@
-package com.aplcustdoor2
+package apl.co.nz.aplcustdoor2
 
 import android.app.Application
 import com.facebook.react.PackageList

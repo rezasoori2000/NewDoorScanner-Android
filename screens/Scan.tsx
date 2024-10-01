@@ -27,8 +27,6 @@ const Scan: React.FC<ScanProps> = ({navigation}) => {
       if (tag?.id) {
         setNfcTag(tag.id);
         const id=tag.id;
-        console.log(tag);
-
         navigation.push('Brief',{nfc:id})
       }
 

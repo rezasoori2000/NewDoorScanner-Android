@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {  BriefProps, DoorImageProps, ProductType, DoorImageType } from '../constant/RoutingType';
-
-
-
+import { Alert } from 'react-native';
 
 
 const Brief: React.FC<BriefProps> = ({ route, navigation }) => {
@@ -29,9 +27,13 @@ const Brief: React.FC<BriefProps> = ({ route, navigation }) => {
     try {
         if (nfc&& nfc.length>5){
       const url = 'http://alpacnz.co.nz/apl/product_details_by_nfc2.php?nfc=' + addColonToHex(nfc);
+//const url='https://reqres.in/api/users?page=2';
       const response = await fetch(url);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
       const json = await response.json();
-      //console.warn(JSON.stringify(json));
       setData(json.product[0]);
         }
     } catch (ex) {
@@ -42,6 +44,15 @@ const Brief: React.FC<BriefProps> = ({ route, navigation }) => {
   useEffect(() => {
     fetchData();
   }, []);
+  const getImage=(data:ProductType)=>{
+   if (data && data.viewed_from_outside){
+      if (data.viewed_from_outside.toLocaleLowerCase()==='right')
+        return data.item_image_right_swing+".jpg"
+      if (data.viewed_from_outside.toLocaleLowerCase()==='left')
+        return data.item_image_left_swing+".jpg"
+   }
+   return require('../assets/img/notfound.png');
+  };
   const getImageUrl=(code:string):string=>{
     var url='';
     var splited=code.split('.');
@@ -53,12 +64,12 @@ try {
 return url;
 
   }
-if (!data)return <View><Text>Loading...</Text></View>
   return (
     <View style={{ flex: 1 }}>
       {error ? (
-        <Text>{error.message}</Text>
-      ) :(
+        <Text style={styles.text}>ERROR: {error.message}</Text>
+      ) :
+     data? (
         <>
       <View style={styles.header}>
         <Image
@@ -103,7 +114,7 @@ if (!data)return <View><Text>Loading...</Text></View>
               style={styles.btnClose}
               onPress={() =>
                 navigation.navigate('DoorImage',{data:{
-                    imageUrl:data.image==null||data.image.includes("N/A")?getImageUrl(data.item_image_item_code):data.image,
+                    imageUrl:getImage(data),
                     left:data.item_image_left_swing,
                     color_code:data.color_code,
                     right:data.item_image_right_swing,
@@ -131,7 +142,7 @@ if (!data)return <View><Text>Loading...</Text></View>
         <View></View>
       </View>
       </>
-)}</View>
+):<></>}</View>
   );
 }
 const styles = StyleSheet.create({

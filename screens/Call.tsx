@@ -52,8 +52,8 @@ const Brief: React.FC<CallProps> = ({ route, navigation }) => {
                 <Text style={styles.textFactory}>APL MANUFACTURING</Text>
               </View>
               <View style={styles.addressContainer}>
-                <Text style={styles.textAddress}>13 Pukete Rd, Te Rapa</Text>
-                <Text style={styles.textAddress}>Hamilton 3241</Text>
+                <Text style={styles.textAddress}>137, Swayne Road</Text>
+                <Text style={styles.textAddress}>Cambridge, 3893</Text>
                 <Text style={styles.textAddress}>New Zealand</Text>
                 <View style={{flexDirection: 'row', marginTop: 20}}>
     
@@ -76,7 +76,7 @@ const Brief: React.FC<CallProps> = ({ route, navigation }) => {
                     source={require('../assets/img/icon-email.png')}
                   />
                   <Text style={styles.contactOrange}>
-                    manufacturing@aplnz.co.nz
+                    sales@aplm.co.nz
                   </Text>
                   </TouchableOpacity>
     

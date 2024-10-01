@@ -38,7 +38,7 @@ const Detail: React.FC<DetailProps> = ({ route, navigation }) => {
           Glass Size: ${data.glass_size}\n
           Order Number: ${data.order_number}\n
           Reference: ${data.reference_number}\n
-          R_Value: ${data.r_value}\n
+          R Value: ${data.r_value}\n
 
           ` ,
           isHTML: false,
@@ -173,8 +173,12 @@ const Detail: React.FC<DetailProps> = ({ route, navigation }) => {
                     <Text style={styles.label}>{data.glass_size}</Text>
                   </View>
                   <View style={styles.infoBox}>
-                    <Text style={styles.headerLabel}>Oerder Number</Text>
+                    <Text style={styles.headerLabel}>Oerder</Text>
                     <Text style={styles.label}>{data.order_number}</Text>
+                  </View>
+                  <View style={styles.infoBox}>
+                    <Text style={styles.headerLabel}>R Value</Text>
+                    <Text style={styles.label}>{data.r_value}</Text>
                   </View>
                 </ScrollView>
               </View>

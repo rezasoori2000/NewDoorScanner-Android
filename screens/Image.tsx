@@ -29,13 +29,18 @@ const DoorImage: React.FC<DoorImageProps> = ({ route, navigation }) => {
   }
 
   // Ensure this is a 20-element tuple
-  const colorMatrix: [number, number, number, number, number, number, number, number, number, number, number, number, number, number, number, number, number, number, number, number] = colorRgb
-    ? [
-        colorRgb.red / 255, 0, 0, 0, 0,
-        0, colorRgb.green / 255, 0, 0, 0,
-        0, 0, colorRgb.blue / 255, 0, 0,
-        0, 0, 0, 1, 0,
-      ]
+  const colorMatrix: [number, number, number, number, number, 
+                      number, number, number, number, number,
+                      number, number, number, number, number, 
+                      number, number, number, number, number] = colorRgb
+                      ? [
+                        colorRgb.red/255==0?1:colorRgb.red/255, 0, 0, 0, 0,
+                        0, colorRgb.green/255==0?1:colorRgb.green/255 , 0, 0, 0,
+                        0, 0, colorRgb.blue/255==0?1:colorRgb.blue/255 , 0, 0,
+                        0, 0, 0, 1, 0,
+                      ]    
+ 
+
     : [
         1, 0, 0, 0, 0,
         0, 1, 0, 0, 0,
@@ -59,9 +64,9 @@ const DoorImage: React.FC<DoorImageProps> = ({ route, navigation }) => {
           <ColorMatrix matrix={colorMatrix}>
             <Image
               source={{
-                uri: `http://alpacnz.co.nz/apl/door_images/images/${route.params.data.imageUrl}.jpg`,
+                uri: `http://alpacnz.co.nz/apl/door_images/images/${route.params.data.imageUrl}`,
               }}
-              style={{ width: route.params.data.width, height: route.params.data.height, resizeMode: 'center' }}
+              style={{ resizeMode:'contain', width:'100%', height: '100%',marginTop:1}}
             />
           </ColorMatrix>
         </View>

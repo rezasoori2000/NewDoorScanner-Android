@@ -1,4 +1,4 @@
-package com.aplcustdoor2
+package apl.co.nz.aplcustdoor2
 import android.os.Bundle;
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
